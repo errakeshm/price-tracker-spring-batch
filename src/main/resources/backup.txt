@@ -1,0 +1,24 @@
+// Retrieve the job parameters
+			/*JobConfiguration jobConfiguration = new JobConfiguration();
+			jobConfiguration.setUrl("https://www.flipkart.com/realme-6-comet-blue-64-gb/p/itm212944b2e7fb0?pid=MOBFPCX7F9NBPRRT&lid=LSTMOBFPCX7F9NBPRRTSHD9FQ&marketplace=FLIPKART&srno=s_1_1&otracker=search&otracker1=search&fm=SEARCH&iid=08906e5f-350f-4ed0-b9bd-e64a7d48a1ac.MOBFPCX7F9NBPRRT.SEARCH&ppt=sp&ppn=sp&ssid=dbackdwzq80000001608470646318&qH=7cd3af2fb6db1e3f");
+			jobConfiguration.setJobName(JobName.FLIPKART);
+			CommonConstants.LOGGER.info("Inside");
+			UrlElement element = new UrlElement(jobConfiguration);
+			// Save the data in the ExecutionContext
+			ExecutionContext jobContext = chunkContext.getStepContext().getStepExecution().getJobExecution().getExecutionContext();
+			jobContext.put(ApplicationConstants.JOB_CONFIG, element);*/
+			
+			
+			
+			/*ExecutionContext jobContext = chunkContext.getStepContext().getStepExecution().getJobExecution().getExecutionContext();
+			UrlElement url = (UrlElement) jobContext.get(ApplicationConstants.JOB_CONFIG);
+			
+			CommonConstants.LOGGER.info(url.getConfiguration().getUrl());
+			
+			EcomVisitor ecomVisitor = new EcomVisitorImpl();
+			Item productData = url.accept(ecomVisitor);
+			CommonConstants.LOGGER.info(productData.toString());
+			
+			return RepeatStatus.FINISHED;*/
+			
+			

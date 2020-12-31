@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+	
+	<context:property-placeholder location="classpath:urls.properties"/>
+	
+	<bean name="flipkart" class="io.pricereader.batch.dataobject.Category">
+        <property name="urls" ref="flipkartUrls"></property>
+    </bean>
+	
+	<util:list id="flipkartUrls" value-type="java.lang.String"> 
+		<value>${realme.url.tracker}</value>
+		<value>${poco.url.tracker}</value>
+	</util:list>
+	
+	<bean name="amazon" class="io.pricereader.batch.dataobject.Category">
+		<property name="urls" ref="amazonUrls"></property>
+	</bean>
+	
+	<util:list id="amazonUrls" value-type="java.lang.String">
+		<value>${m51.url.tracker}</value>
+	</util:list>
+</beans>
