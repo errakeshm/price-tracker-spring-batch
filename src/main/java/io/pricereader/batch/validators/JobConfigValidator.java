@@ -1,6 +1,5 @@
 package io.pricereader.batch.validators;
 
-import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
 

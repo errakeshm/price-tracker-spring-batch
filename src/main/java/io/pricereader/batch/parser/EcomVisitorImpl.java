@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 import io.pricereader.batch.constants.ApplicationConstants;
 import io.pricereader.batch.constants.CommonConstants;
@@ -22,15 +23,22 @@ public class EcomVisitorImpl implements EcomVisitor {
 				price = NumberHelper.getCurrencyValue(document.getElementsByClass("_30jeq3 _16Jk6d").text());
 				name = document.getElementsByClass("B_NuCI").text();
 			} else if(ApplicationConstants.JobName.amazon.equals(element.getConfiguration().getJobName())){
-				price = NumberHelper.getCurrencyValue(document.getElementById("priceblock_dealprice").text());
-				name = document.getElementById("productTitle").text().trim();
-				System.out.println(price+"---"+name);
+				Element priceElement = document.getElementById("priceblock_dealprice");
+				Element nameElement = document.getElementById("productTitle");
+				if(priceElement != null) {
+					price = NumberHelper.getCurrencyValue(priceElement.text());
+				} else
+					CommonConstants.LOGGER.debug("No price element found");
+				
+				if(nameElement != null) {
+					name = nameElement.text().trim();
+				} else
+					CommonConstants.LOGGER.debug("No Name element found");
 			}
-			
 			
 			return Item.ItemBuilder.getInstance()
 					.setName(name)
-					.setPrice(price)
+					.setPrice(price!=null ? price : -1)
 					.setRecordedTs(LocalDateTime.now())
 					.build();
 		} catch (IOException e) {

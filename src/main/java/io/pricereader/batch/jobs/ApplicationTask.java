@@ -9,6 +9,7 @@ import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.launch.JobLauncher;
 
+import io.pricereader.batch.constants.CommonConstants;
 import io.pricereader.batch.dataobject.JobDefinition;
 
 public class ApplicationTask implements Runnable{
@@ -41,7 +42,7 @@ public class ApplicationTask implements Runnable{
 		try {
 			applicationJobLauncher.run(job, parameters);
 		} catch (Exception e) {
-			e.printStackTrace();
+			CommonConstants.LOGGER.error(e.getMessage());
 		}
 	}
 

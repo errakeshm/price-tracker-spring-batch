@@ -14,8 +14,8 @@
     </bean>
 	
 	<util:list id="flipkartUrls" value-type="java.lang.String"> 
-		<value>${realme.url.tracker}</value>
-		<value>${poco.url.tracker}</value>
+		<!-- <value>${realme.url.tracker}</value>
+		<value>${poco.url.tracker}</value>  -->
 	</util:list>
 	
 	<bean name="amazon" class="io.pricereader.batch.dataobject.Category">
@@ -23,6 +23,6 @@
 	</bean>
 	
 	<util:list id="amazonUrls" value-type="java.lang.String">
-		<value>${m51.url.tracker}</value>
+		<!-- <value>${m51.url.tracker}</value> -->
 	</util:list>
 </beans>

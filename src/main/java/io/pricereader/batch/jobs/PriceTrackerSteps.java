@@ -76,7 +76,6 @@ public class PriceTrackerSteps {
 		return (configuration, chunkContext) -> {
 			String jobName = (String) chunkContext.getStepContext().getJobParameters().get("jobName");
 			Boolean prevStepSkipped = (Boolean)chunkContext.getStepContext().getStepExecution().getJobExecution().getExecutionContext().get(STATUS+jobName);
-			System.out.println(jobName + " - "+ prevStepSkipped);
 			if(this.dataRetrievalThreadPool.isJobRunning() && (prevStepSkipped != null && !prevStepSkipped)) {
 				List<Item> results = this.dataRetrievalThreadPool.retrieveData();
 				for(Item item : results) {
