@@ -4,6 +4,7 @@ import io.pricereader.batch.constants.ApplicationConstants.JobName;
 
 public class JobConfiguration {
 	private String url;
+	private String name;
 	private JobName jobName;
 	public String getUrl() {
 		return url;
@@ -17,8 +18,14 @@ public class JobConfiguration {
 	public void setJobName(JobName jobName) {
 		this.jobName = jobName;
 	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getName() {
+		return name;
+	}
 	@Override
 	public String toString() {
-		return "JobConfiguration [url=" + url + ", jobName=" + jobName + "]";
+		return "JobConfiguration [url=" + url + ", jobName=" + jobName + ", name=" +name+"]";
 	} 
 }

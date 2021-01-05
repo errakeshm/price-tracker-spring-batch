@@ -1,6 +1,7 @@
 package io.pricereader.batch.dataobject;
 
 public class ProductDO {
+	private Long productId;
 	private String name;
 	private String category;
 	private String url;
@@ -21,5 +22,15 @@ public class ProductDO {
 	}
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
+	public Long getProductId() {
+		return productId;
+	}
+	@Override
+	public String toString() {
+		return "ProductDO [productId=" + productId + ", name=" + name + ", category=" + category + ", url=" + url + "]";
 	}
 }

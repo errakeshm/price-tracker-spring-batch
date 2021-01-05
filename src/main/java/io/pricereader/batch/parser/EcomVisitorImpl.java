@@ -9,6 +9,7 @@ import org.jsoup.nodes.Element;
 
 import io.pricereader.batch.constants.ApplicationConstants;
 import io.pricereader.batch.constants.CommonConstants;
+import io.pricereader.batch.entities.Price;
 import io.pricereader.batch.helpers.NumberHelper;
 
 public class EcomVisitorImpl implements EcomVisitor {
@@ -35,11 +36,12 @@ public class EcomVisitorImpl implements EcomVisitor {
 				} else
 					CommonConstants.LOGGER.debug("No Name element found");
 			}
-			
 			return Item.ItemBuilder.getInstance()
+					.setJobName(element.getConfiguration().getJobName())
 					.setName(name)
 					.setPrice(price!=null ? price : -1)
 					.setRecordedTs(LocalDateTime.now())
+					.setUrl(element.getConfiguration().getUrl())
 					.build();
 		} catch (IOException e) {
 			CommonConstants.LOGGER.error(e.getMessage());

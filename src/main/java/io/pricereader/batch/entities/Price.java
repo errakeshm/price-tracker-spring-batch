@@ -1,11 +1,17 @@
 package io.pricereader.batch.entities;
 
 
+import java.io.Serializable;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
 @Entity
-public class Price {
+public class Price implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@EmbeddedId
 	private PriceKey priceKey;
 	private Float value;

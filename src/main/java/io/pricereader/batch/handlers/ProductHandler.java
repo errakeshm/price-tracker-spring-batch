@@ -22,7 +22,7 @@ public class ProductHandler {
 	public Long addProduct(ProductDO product) {
 		Long productId =  this.productDAO.addProduct(product);
 		Category category = (Category) this.applicationContext.getBean(product.getCategory());
-		category.getUrls().add(product.getUrl());
+		category.getUrls().put(product.getName(), product.getUrl());
 		return productId;
 	}
 	

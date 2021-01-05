@@ -1,14 +1,13 @@
 package io.pricereader.batch.dataobject;
 
-import java.util.List;
+import java.util.Map;
 
 public class Category {
-	private List<String> urls;
-	public List<String> getUrls() {
+	private Map<String, String> urls;
+	public Map<String, String> getUrls() {
 		return urls;
 	}
-	public void setUrls(List<String> urls) {
+	public void setUrls(Map<String, String> urls) {
 		this.urls = urls;
 	}
-	
 }

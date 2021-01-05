@@ -2,6 +2,7 @@ package io.pricereader.batch.entities;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -17,10 +18,10 @@ public class PriceKey implements Serializable {
 	private Long productId;
 	
 	@Column(name = "timestamp", nullable = false)
-	private Timestamp timestamp;
+	private LocalDateTime timestamp;
 	public PriceKey() {
 	}
-	public PriceKey(Long productId, Timestamp timestamp) {
+	public PriceKey(Long productId, LocalDateTime timestamp) {
 		this.productId = productId;
 		this.timestamp = timestamp;
 	}
@@ -30,10 +31,10 @@ public class PriceKey implements Serializable {
 	public void setProductId(Long productId) {
 		this.productId = productId;
 	}
-	public Timestamp getTimestamp() {
+	public LocalDateTime getTimestamp() {
 		return timestamp;
 	}
-	public void setTimestamp(Timestamp timestamp) {
+	public void setTimestamp(LocalDateTime timestamp) {
 		this.timestamp = timestamp;
 	}
 }

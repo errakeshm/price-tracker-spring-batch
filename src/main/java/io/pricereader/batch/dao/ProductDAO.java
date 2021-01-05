@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import io.pricereader.batch.constants.CommonConstants;
 import io.pricereader.batch.dataobject.PriceDO;
 import io.pricereader.batch.dataobject.ProductDO;
 import io.pricereader.batch.entities.Price;
@@ -31,6 +32,7 @@ public class ProductDAO {
 		productEntity.setName(product.getName());
 		productEntity.setCategory(product.getCategory());
 		productEntity.setUrl(product.getUrl());
+		productEntity.registerProductAddEvent();
 		Product savedProduct = this.productRepository.save(productEntity);
 		return savedProduct.getProductId();
 	}
@@ -41,6 +43,21 @@ public class ProductDAO {
 		if(product.isPresent()) {
 			Product result =  product.get();
 			productDO = new ProductDO();
+			productDO.setProductId(result.getProductId());
+			productDO.setName(result.getName());
+			productDO.setCategory(result.getCategory());
+			productDO.setUrl(result.getUrl());
+		}
+		return productDO;
+	}
+	
+	public ProductDO getProductByName(String name) {
+		Optional<Product> product = this.productRepository.findByName(name);
+		ProductDO productDO = null;
+		if(product.isPresent()) {
+			Product result =  product.get();
+			productDO = new ProductDO();
+			productDO.setProductId(result.getProductId());
 			productDO.setName(result.getName());
 			productDO.setCategory(result.getCategory());
 			productDO.setUrl(result.getUrl());
@@ -52,6 +69,7 @@ public class ProductDAO {
 		Optional<Product> productOptional = this.productRepository.findById(id);
 		if(productOptional.isPresent()) {
 			Product product = productOptional.get();
+			CommonConstants.LOGGER.info("PriceList by id : "+product.toString());
 			return product.getPrice().stream().limit(size).map(price->{
 				return new PriceDO(price.getPriceKey().getProductId(), price.getValue(), 
 						price.getPriceKey().getTimestamp());

@@ -1,12 +1,13 @@
 package io.pricereader.batch.dataobject;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class PriceDO {
 	private Long productId;
 	private Float price;
-	private Timestamp timestamp;
-	public PriceDO(Long productId, Float price, Timestamp timestamp) {
+	private LocalDateTime timestamp;
+	public PriceDO(Long productId, Float price, LocalDateTime timestamp) {
 		this.productId = productId;
 		this.price = price;
 		this.timestamp = timestamp;
@@ -23,10 +24,10 @@ public class PriceDO {
 	public void setPrice(Float price) {
 		this.price = price;
 	}
-	public Timestamp getTimestamp() {
+	public LocalDateTime getTimestamp() {
 		return timestamp;
 	}
-	public void setTimestamp(Timestamp timestamp) {
+	public void setTimestamp(LocalDateTime timestamp) {
 		this.timestamp = timestamp;
 	}
 }

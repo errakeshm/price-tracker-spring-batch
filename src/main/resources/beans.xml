@@ -13,16 +13,24 @@
         <property name="urls" ref="flipkartUrls"></property>
     </bean>
 	
-	<util:list id="flipkartUrls" value-type="java.lang.String"> 
-		<!-- <value>${realme.url.tracker}</value>
-		<value>${poco.url.tracker}</value>  -->
-	</util:list>
+	<!-- <util:list id="flipkartUrls" value-type="java.lang.String"> 
+		<value>${realme.url.tracker}</value>
+		<value>${poco.url.tracker}</value> 
+	</util:list> -->
+	
+	<util:map id="flipkartUrls" key-type="java.lang.String" value-type="java.lang.String">
+		<entry key="RealmeX3" value="${realme.url.tracker}"></entry>
+	</util:map>
 	
 	<bean name="amazon" class="io.pricereader.batch.dataobject.Category">
 		<property name="urls" ref="amazonUrls"></property>
 	</bean>
 	
-	<util:list id="amazonUrls" value-type="java.lang.String">
-		<!-- <value>${m51.url.tracker}</value> -->
-	</util:list>
+	<!-- <util:list id="amazonUrls" value-type="java.lang.String">
+		<value>${m51.url.tracker}</value>
+	</util:list> -->
+	
+	<util:map id="amazonUrls" key-type="java.lang.String" value-type="java.lang.String">
+		<entry key="M51" value="${m51.url.tracker}"></entry>
+	</util:map>
 </beans>

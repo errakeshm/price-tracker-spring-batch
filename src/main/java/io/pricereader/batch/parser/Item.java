@@ -1,20 +1,23 @@
 package io.pricereader.batch.parser;
 
 import java.time.LocalDateTime;
+import io.pricereader.batch.constants.ApplicationConstants.JobName;
 
 public class Item {
 	String name;
 	JobName jobName;
 	float price;
 	LocalDateTime recordedTs;
+	String url;
 	
-	private Item(String name, JobName jobName, float price, LocalDateTime recordedTs) {
+	private Item(String name, JobName jobName, float price, LocalDateTime recordedTs, String url) {
 		this.name = name;
 		this.jobName = jobName;
 		this.price = price;
 		this.recordedTs = recordedTs;
+		this.url = url;
 	}
-	public interface JobName {
+	public interface IJobName {
 		Name setJobName(JobName jobName);
 	}
 	public interface Name {
@@ -24,17 +27,21 @@ public class Item {
 		RecordedTs setPrice(float price);
 	}
 	public interface RecordedTs {
-		RecordedTs setRecordedTs(LocalDateTime recordedTs);
+		Url setRecordedTs(LocalDateTime recordedTs);
+	}
+	public interface Url {
+		Url setUrl(String url);
 		Item build();
 	}
 	
-	public static class ItemBuilder implements Name, JobName, Price, RecordedTs {
+	public static class ItemBuilder implements Name, IJobName, Price, RecordedTs, Url {
 		String name;
 		JobName jobName;
 		float price;
 		LocalDateTime recordedTs;
+		String url;
 		
-		public static Name getInstance() {
+		public static IJobName getInstance() {
 			return new ItemBuilder();
 		}
 		@Override
@@ -56,17 +63,37 @@ public class Item {
 		}
 	
 		@Override
-		public RecordedTs setRecordedTs(LocalDateTime recordedTs) {
+		public Url setRecordedTs(LocalDateTime recordedTs) {
 			this.recordedTs = recordedTs;
 			return this;
 		}
 		
 		@Override
+		public Url setUrl(String url) {
+			this.url = url;
+			return this;
+		}
+		
+		@Override
 		public Item build() {
-			return new Item(name, jobName, price, recordedTs);
+			return new Item(name, jobName, price, recordedTs, url);
 		}
 	}
-	
+	public JobName getJobName() {
+		return jobName;
+	}
+	public String getName() {
+		return name;
+	}
+	public float getPrice() {
+		return price;
+	}
+	public LocalDateTime getRecordedTs() {
+		return recordedTs;
+	}
+	public String getUrl() {
+		return url;
+	}
 	@Override
 	public String toString() {
 		return name +" "+price +" "+recordedTs; 
