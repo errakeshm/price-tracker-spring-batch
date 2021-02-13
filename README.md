@@ -2,14 +2,14 @@
 
 ## Overview
 - The application tracks the prices of products.
-- Schedule is set based on a cron expression
+- Schedule is set based on a cron expression which is defined in scheduler.properties
 - Concepts utilized : Spring batch, Multi threading, Spring scheduler, Design patterns (Visitor, Fluent)
 
 
 ## Functionalities (Under Development)
-- You can add a list of urls in beans.xml. 
-- You can add an url using a rest service
-- Right now the data is printed straight to the console.
+- You can add a list of urls in beans.xml. The url can have reference in url.properties 
+- You can add an url(for tracking) using a rest service, view the price list for a product, view the product information
+- The data is printed straight to the console also the price is tracked through an in memory h2 database. The database can be swapped with another database.
 
 ``` 
 
